@@ -1,0 +1,10 @@
+/* frontend/src/app/components/Footer.module.css */
+
+.footerContainer {
+  width: 100%;
+  padding: 2rem 5%;
+  text-align: center;
+  border-top: 1px solid var(--cor-fundo-secundaria);
+  font-size: 0.9rem;
+  color: #aaa; /* Uma cor mais suave para o rodapé */
+}

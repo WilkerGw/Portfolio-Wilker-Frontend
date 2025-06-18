@@ -1,0 +1,33 @@
+/* frontend/src/app/globals.css */
+
+/* 1. Definição das variáveis de cor inspiradas na sua logo */
+:root {
+  --cor-primaria: #CFFF0F; /* Verde-Limão Vibrante */
+  --cor-fundo: #282828;    /* Cinza Escuro */
+  --cor-texto: #F5F5F5;    /* Branco Suave */
+  --cor-fundo-secundaria: #3a3a3a; /* Um cinza um pouco mais claro para detalhes */
+}
+
+/* 2. Reset de CSS e estilos base */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden; /* Previne scroll horizontal */
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+  color: inherit; /* Links herdam a cor do texto pai */
+  text-decoration: none; /* Removemos o sublinhado padrão */
+}

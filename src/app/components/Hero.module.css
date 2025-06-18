@@ -1,0 +1,219 @@
+/* frontend/src/app/components/Hero.module.css */
+
+.heroContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 82px);
+  padding: 2rem 8%;
+  overflow: hidden;
+}
+
+.heroText {
+  flex: 1;
+  max-width: 600px;
+  z-index: 5;
+}
+
+.heroText h1 {
+  font-size: clamp(3.5rem, 6vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.highlight {
+  color: var(--cor-primaria);
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: #c5c5c5;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.ctaButton {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  border: 2px solid var(--cor-primaria);
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: var(--cor-primaria);
+}
+
+.secondaryButton:hover {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.socials a {
+  color: #a0a0a0;
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  color: var(--cor-primaria);
+  transform: scale(1.2);
+}
+
+.heroVisual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.glowingBlob {
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 450px;
+  background: radial-gradient(
+    circle,
+    var(--cor-primaria) 0%,
+    rgba(40, 40, 40, 0) 70%
+  );
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: pulse 10s infinite alternate;
+  opacity: 0.25;
+  position: absolute;
+}
+
+.heroLogo {
+  position: relative;
+  z-index: 2;
+  animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsividade - CORREÇÃO DEFINITIVA */
+@media (max-width: 992px) {
+  .heroContainer {
+    /* Empilha os itens, com o .heroVisual aparecendo primeiro */
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 4rem; /* Adiciona espaço no topo */
+    padding-bottom: 4rem;
+  }
+
+  .heroVisual {
+    /* GARANTE que o container da logo esteja visível e se comporte como flex */
+    display: flex;
+    flex: none;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  /* Reduz o tamanho da logo e do brilho no mobile */
+  .heroLogo {
+    width: 200px;
+    height: 200px;
+    animation: none; /* Desativa a animação de flutuação no mobile se preferir */
+  }
+
+  .glowingBlob {
+    width: 300px;
+    height: 300px;
+  }
+
+  .heroText {
+    text-align: center;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subtitle {
+    max-width: 600px;
+  }
+  .buttonGroup {
+    justify-content: center;
+  }
+  .socials {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContainer {
+    min-height: auto; /* Deixa o conteúdo ditar a altura */
+    padding: 6rem 5%;
+  }
+
+  .heroText h1 {
+  font-size: 3rem;
+}
+
+.heroText p {
+  font-size: 1.5rem;
+}
+
+.heroLogo {
+  width: 150px;
+  height: 150px;
+}
+
+.heroVisual {
+  margin-bottom: 0;
+}
+
+.glowingBlob {
+  width: 200px;
+  height: 200px;
+}
+
+}
