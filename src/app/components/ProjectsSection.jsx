@@ -1,50 +1,18 @@
 // frontend/src/app/components/ProjectsSection.jsx
 
-"use client";
-
-import React, { useState, useEffect } from 'react';
+// Removemos o "use client" e os hooks useState e useEffect. Agora é um Server Component.
+import React from 'react';
 import ProjectCard from './ProjectCard';
 import styles from './ProjectsSection.module.css';
 
-const ProjectsSection = () => {
-  const [projects, setProjects] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        // MUDANÇA AQUI: Usando a variável de ambiente
-        const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/projects`;
-        const response = await fetch(apiUrl);
-        
-        if (!response.ok) {
-          throw new Error('Falha ao buscar os dados dos projetos');
-        }
-
-        const data = await response.json();
-        setProjects(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
+// O componente agora recebe 'projects' como uma prop
+const ProjectsSection = ({ projects }) => {
+  // A lógica de carregamento e erro agora é tratada na página pai (page.js)
   const renderContent = () => {
-    if (isLoading) {
-      return <p className={styles.loadingText}>A carregar projetos...</p>;
-    }
-    
-    if (error) {
-      return <p className={styles.errorText}>Erro: {error}</p>;
-    }
-
-    if (projects.length === 0) {
-      return <p>Nenhum projeto encontrado.</p>;
+    // Verifica se a prop 'projects' não é undefined e se tem conteúdo
+    if (!projects || projects.length === 0) {
+      // Esta mensagem só aparecerá se a API falhar ou não retornar projetos.
+      return <p>Nenhum projeto encontrado ou falha ao carregar.</p>;
     }
 
     return (
