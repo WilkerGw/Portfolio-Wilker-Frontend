@@ -8,12 +8,11 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Header.module.css';
 
-// Para evitar repetição, definimos os links num array
 const navLinks = [
   { title: "Início", href: "/" },
   { title: "Projetos", href: "/#projetos" },
-  { title: "Sobre", href: "/sobre" },
-  { title: "Contato", href: "/contato" },
+  { title: "Sobre", href: "#sobre" },
+  { title: "Contato", href: "#contato" },
 ];
 
 const Header = () => {

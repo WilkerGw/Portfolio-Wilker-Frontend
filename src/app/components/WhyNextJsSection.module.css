@@ -2,25 +2,17 @@
 
 .whyNextContainer {
   padding: 5rem 8%;
-  /* AQUI ESTÁ A ALTERAÇÃO: Trocamos para a cor de fundo principal */
-  background-color: var(--cor-fundo); 
+  background-color: var(--cor-fundo);
 }
 
 .sectionTitle {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--cor-texto);
 }
 
 .sectionTitle::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background-color: var(--cor-primaria);
-  margin: 0.5rem auto 0;
-  border-radius: 2px;
+  content: ''; display: block; width: 60px; height: 4px; background-color: var(--cor-primaria); margin: 0.5rem auto 0; border-radius: 2px;
 }
 
 .sectionSubtitle {
@@ -36,18 +28,21 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
+  align-items: start; /* Alinha os cards no topo */
 }
 
 .advantageCard {
-  /* Para manter o contraste, os cards agora ficam com a cor de fundo secundária */
   background-color: var(--cor-fundo-secundaria);
   padding: 2rem;
   border-radius: 12px;
   border: 1px solid #444;
+  display: flex;
+  flex-direction: column;
 }
 
 .cardTitle {
   font-size: 1.5rem;
+  margin-top: 0;
   margin-bottom: 1.5rem;
   color: var(--cor-primaria);
 }
@@ -55,6 +50,12 @@
 .advantageCard ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+/* Remove a margem do primeiro item para um espaçamento consistente */
+.advantageCard ul:first-of-type li {
+  margin-bottom: 0;
 }
 
 .advantageCard li {
@@ -62,13 +63,40 @@
   line-height: 1.6;
   margin-bottom: 1rem;
   color: #e0e0e0;
+  padding-left: 1.5rem;
+  position: relative;
 }
 
-.advantageCard li strong {
-  color: var(--cor-texto);
-  display: block;
-  margin-bottom: 0.25rem;
+/* Adiciona um "bullet point" personalizado */
+.advantageCard li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--cor-primaria);
 }
+
+
+/* --- NOVOS ESTILOS PARA O BOTÃO 'VER MAIS' --- */
+.showMoreButton {
+    background: none;
+    border: none;
+    color: var(--cor-primaria);
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    margin-top: 1rem; /* Espaçamento acima do botão */
+    align-self: flex-start; /* Alinha o botão à esquerda */
+}
+
+.arrowIcon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
 
 @media (max-width: 992px) {
   .advantagesGrid {

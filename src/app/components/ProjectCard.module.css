@@ -1,113 +1,83 @@
 /* frontend/src/app/components/ProjectCard.module.css */
 
 .card {
-  background-color: var(--cor-fundo-secundaria);
+  display: block;
+  position: relative;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-}
-
-.imageContainer {
-  width: 100%;
-  height: 200px;
-  position: relative;
-  overflow: hidden;
-}
-
-.image {
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.card:hover .image {
-    transform: scale(1.05);
-}
-
-/* NOVOS ESTILOS PARA A IMAGEM MOBILE NO CARD */
-.cardMobileImageWrapper {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 60px; /* Tamanho pequeno para não sobrecarregar */
-    height: 120px;
-    border: 2px solid #fff;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.card:hover .cardMobileImageWrapper {
-    transform: scale(1.05) translateY(-5px);
-}
-
-.cardImageMobile {
-    object-fit: cover;
+  height: 250px;
+  cursor: pointer;
 }
 
 .cardContent {
+  width: 100%;
+  height: 100%;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.4s ease-out;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.1);
+}
+
+/* NOVO: Container para o título sempre visível */
+.titleContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 1.5rem 1rem 1.5rem; /* Mais padding em cima para o gradiente */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2; /* Garante que fique acima da imagem */
+}
+
+.titleContainer h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ATUALIZADO: O overlay agora cobre tudo e escurece a imagem */
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   padding: 1.5rem;
-  flex-grow: 1;
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(2px);
   display: flex;
   flex-direction: column;
-}
-
-.mainLink h3 {
-    color: var(--cor-primaria);
-    transition: color 0.3s ease;
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-}
-
-.mainLink:hover h3 {
-    color: var(--cor-texto);
-}
-
-.cardContent p {
-    font-size: 1rem;
-    line-height: 1.6;
-    flex-grow: 1;
-    margin-bottom: 1rem;
-    color: #c5c5c5;
+  justify-content: center; /* Centraliza o conteúdo revelado */
+  align-items: center;
+  text-align: center;
+  z-index: 3; /* Fica por cima do título no hover */
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
 .tag {
-  background-color: rgba(207, 255, 15, 0.1);
-  color: var(--cor-primaria);
-  padding: 0.3rem 0.7rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
-  font-weight: 500;
 }
 
-.cardLinks {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.link {
-  color: var(--cor-texto);
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.link:hover {
+.cardLinks p {
+  font-size: 1.2rem;
   color: var(--cor-primaria);
+  font-weight: 500;
 }

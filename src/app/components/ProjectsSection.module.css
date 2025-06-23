@@ -1,7 +1,7 @@
 /* frontend/src/app/components/ProjectsSection.module.css */
 
 .projectsSection {
-  padding: 4rem 5%;
+  padding: 5rem 8%;
   background-color: var(--cor-fundo);
 }
 
@@ -24,9 +24,8 @@
 
 .projectsGrid {
   display: grid;
-  /* Cria colunas responsivas: tenta caber o máximo de colunas com 350px de largura mínima */
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Tamanho mínimo do card ajustado */
+  gap: 2rem; /* Espaçamento ajustado */
 }
 
 .loadingText,
@@ -43,11 +42,4 @@
   border-radius: 8px;
   max-width: 500px;
   margin: 0 auto;
-}
-
-/* Media query para telas menores, onde o mínimo de 350px pode ser muito */
-@media (max-width: 480px) {
-  .projectsGrid {
-    grid-template-columns: 1fr;
-  }
 }
