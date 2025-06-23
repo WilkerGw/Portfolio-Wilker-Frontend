@@ -1,3 +1,5 @@
+// frontend/src/app/projetos/[id]/page.js
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -5,11 +7,14 @@ import styles from './project-detail.module.css';
 import { notFound } from 'next/navigation';
 
 async function getProjectData(id) {
-  // Usamos cache: 'no-store' durante o desenvolvimento para evitar problemas de cache
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/projects/${id}`;
-  const res = await fetch(apiUrl, { cache: 'no-store' });
 
-  if (!res.ok) { return notFound(); }
+  // A MESMA MUDANÇA MÁGICA AQUI:
+  const res = await fetch(apiUrl, { next: { revalidate: 3600 } });
+
+  if (!res.ok) {
+    return notFound();
+  }
   return res.json();
 }
 
