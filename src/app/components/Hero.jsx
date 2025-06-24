@@ -71,7 +71,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.cvItem}`}>
-        <a href="/WilkerSilva_Curriculo.pdf" download="WilkerSilva_Curriculo.pdf">
+        <a href="/WilkerMartins_Curriculo.pdf" download="WilkerMartins_Curriculo.pdf">
           <h3>Download CV</h3>
           <p>Acesse meu currículo completo</p>
           <span className={styles.arrow}>&darr;</span>
