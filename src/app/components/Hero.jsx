@@ -37,7 +37,7 @@ const Hero = () => {
       <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.mainText}`}>
         <h1><span className={styles.highlight}>Wilker Martins</span></h1>
         <p className={styles.subtitle}>
-          Desenvolvedor Web Full-Stack apaixonado por criar soluções digitais modernas e performáticas.
+          Desenvolvedor Web Full-Stack
         </p>
       </motion.div>
 
@@ -79,7 +79,6 @@ const Hero = () => {
       </motion.div>
 
       <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.locationItem}`}>
-        <p>Baseado em</p>
         <h3>São Paulo, Brasil</h3>
       </motion.div>
 

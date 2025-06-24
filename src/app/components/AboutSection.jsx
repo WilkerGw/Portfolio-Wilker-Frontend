@@ -17,24 +17,24 @@ const skills = {
 
 const timelineData = [
   {
-    year: '2021',
-    title: 'Início da Jornada',
-    description: 'Comecei a minha imersão no mundo da tecnologia, explorando os fundamentos do desenvolvimento web com HTML, CSS e JavaScript.',
-  },
-  {
     year: '2022',
-    title: 'Aprofundamento em React',
-    description: 'Foquei em dominar o React e o seu ecossistema, construindo os meus primeiros projetos interativos e dinâmicos.',
+    title: 'Início da Jornada',
+    description: 'Em busca de uma carreira onde os resultados dependessem diretamente do meu desempenho, fiz a transição da área de vendas para a de tecnologia, onde iniciei minha formação em Gestão da TI.',
   },
   {
     year: '2023',
-    title: 'Explorando o Full-Stack',
-    description: 'Expandia as minhas competências para o backend com Node.js e Express, compreendendo a criação de APIs e a interação com bancos de dados.',
+    title: 'Paixão por "Criar coisas"',
+    description: 'O fascínio em transformar ideias em realidade me levou a aprofundar na programação. Iniciei com HTML e CSS, e foi nesse momento que desenvolvi um interesse especial pelo desenvolvimento front-end.',
   },
   {
     year: '2024',
-    title: 'Maestria em Next.js',
-    description: 'Adotei o Next.js como meu framework principal, aproveitando o seu poder para criar aplicações performáticas e robustas, prontas para produção.',
+    title: 'Pojetos reais',
+    description: 'Com a necessidade de aplicar meu conhecimentos em projetos reais, decidi assumir a reponsabilidade de criar a presença online da ótica do meu compnaheiro. Foi quando desenvolvi o site oficial da empresa com agendamento de exame de vista gratuito (Primeiros contatos com backend e banco de dados).',
+  },
+  {
+    year: '2025',
+    title: 'Aprendizado Horizontal',
+    description: 'Hoje, minhas responsabilidades incluem o site oficial da loja e o desenvolvimento de um sistema ERP para gerenciamento de produtos, vendas e clientes. Cuido também da gestão das redes sociais, além da fotografia e edição das imagens dos produtos.',
   },
 ];
 
@@ -51,7 +51,7 @@ const AboutSection = () => {
         >
           <h1>Uma Paixão por Construir o Futuro da Web</h1>
           <p>
-            Olá! Eu sou Wilker Silva. Para mim, programar é mais do que escrever código; é a arte de resolver problemas e criar experiências significativas. Sou movido pela curiosidade e pela satisfação de transformar uma ideia abstrata num produto digital funcional, intuitivo e com um design limpo.
+            Olá! Eu sou Wilker Martins. Para mim, programar é mais do que escrever código; é a arte de resolver problemas e criar experiências significativas. Sou movido pela curiosidade e pela satisfação de transformar uma ideia abstrata num produto digital funcional, intuitivo e com um design limpo.
           </p>
         </motion.div>
         <motion.div 
