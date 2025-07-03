@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 import styles from './Header.module.css';
 
 const navLinks = [
@@ -17,7 +18,7 @@ const navLinks = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false); // Novo estado para o scroll
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,31 +50,28 @@ const Header = () => {
   return (
     <>
       <header className={`${styles.headerContainer} ${hasScrolled ? styles.scrolled : ''}`}>
-        <Link href="#">
-          <Image
-            src="/logo.png"
-            alt="Logo do portfólio de Wilker Martins"
-            width={45}
-            height={45}
-            priority
-          />
-        </Link>
-        
-        <nav className={styles.navigation}>
-          <ul>
-            {navLinks.map((link) => (
-              <li key={link.title}>
-                <Link href={link.href}>{link.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {/* Container único para todos os elementos da direita */}
+        <div className={styles.rightSideWrapper}>
+          {/* Navegação de Desktop (será escondida em mobile via CSS) */}
+          <nav className={styles.navigation}>
+            <ul>
+              {navLinks.map((link) => (
+                <li key={link.title}><Link href={link.href}>{link.title}</Link></li>
+              ))}
+            </ul>
+            <ThemeToggle /> 
+          </nav>
 
-        <button className={styles.menuButton} onClick={toggleMenu} aria-label="Abrir menu">
-          <motion.div className={styles.menuLine} variants={{ closed: { rotate: 0, y: -6 }, open: { rotate: 45, y: 0 } }} animate={isMenuOpen ? "open" : "closed"} transition={{ duration: 0.3 }} />
-          <motion.div className={styles.menuLine} variants={{ closed: { opacity: 1 }, open: { opacity: 0 } }} animate={isMenuOpen ? "open" : "closed"} transition={{ duration: 0.2 }} />
-          <motion.div className={styles.menuLine} variants={{ closed: { rotate: 0, y: 6 }, open: { rotate: -45, y: 0 } }} animate={isMenuOpen ? "open" : "closed"} transition={{ duration: 0.3 }} />
-        </button>
+          {/* Wrapper para os botões de Mobile (será mostrado apenas em mobile via CSS) */}
+          <div className={styles.mobileMenuWrapper}>
+            <ThemeToggle />
+            <button className={styles.menuButton} onClick={toggleMenu} aria-label="Abrir menu">
+                <motion.div className={styles.menuLine} variants={{ closed: { rotate: 0, y: -6 }, open: { rotate: 45, y: 0 } }} animate={isMenuOpen ? "open" : "closed"} transition={{ duration: 0.3 }} />
+                <motion.div className={styles.menuLine} variants={{ closed: { opacity: 1 }, open: { opacity: 0 } }} animate={isMenuOpen ? "open" : "closed"} transition={{ duration: 0.2 }} />
+                <motion.div className={styles.menuLine} variants={{ closed: { rotate: 0, y: 6 }, open: { rotate: -45, y: 0 } }} animate={isMenuOpen ? "open" : "closed"} transition={{ duration: 0.3 }} />
+            </button>
+          </div>
+        </div>
       </header>
 
       <AnimatePresence>

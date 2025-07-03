@@ -24,8 +24,9 @@
 
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Tamanho mínimo do card ajustado */
-  gap: 2rem; /* Espaçamento ajustado */
+  /* AQUI ESTÁ A CORREÇÃO: Reduzimos a largura mínima para 280px */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .loadingText,

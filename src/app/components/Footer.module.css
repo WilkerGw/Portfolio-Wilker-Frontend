@@ -2,9 +2,10 @@
 
 .footerContainer {
   width: 100%;
-  padding: 2rem 5%;
+  padding: 2.5rem 5%; /* Aumentei um pouco o padding para mais respiro */
   text-align: center;
-  border-top: 1px solid var(--cor-fundo-secundaria);
+  background-color: var(--cor-fundo-secundaria); /* Adicionada a cor de fundo secundária */
+  border-top: 1px solid var(--cor-borda); /* Usa a variável de borda */
   font-size: 0.9rem;
-  color: #aaa; /* Uma cor mais suave para o rodapé */
+  color: var(--cor-texto-secundario); /* CORRIGIDO: Usa a variável de texto secundário */
 }

@@ -1,103 +1,163 @@
 /* frontend/src/app/components/Hero.module.css */
 
 .heroContainer {
-  height: 100vh; /* Ocupa a altura total da tela */
-  width: 100%;
-  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: row; /* Layout de colunas no desktop */
   align-items: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden; /* Garante que a imagem não vaze */
-}
-
-.backgroundImage {
-  z-index: 1;
-  /* Efeito de zoom lento - "Ken Burns" */
-  animation: zoom 20s infinite alternate;
-}
-
-@keyframes zoom {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.1);
-  }
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+  justify-content: center;
   width: 100%;
-  height: 100%;
-  background: rgba(15, 15, 15, 0.6); /* Overlay escuro para legibilidade */
-  z-index: 2;
+  min-height: calc(100vh - 82px); /* Altura da tela menos a altura do header */
+  background-color: var(--cor-fundo); /* Fundo sólido adaptativo */
+  transition: background-color 0.3s ease;
 }
 
-.heroContent {
-  position: relative;
-  z-index: 3;
+/* Coluna da Esquerda */
+.heroText {
+  flex: 1;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+  align-items: flex-start; /* Alinha o texto à esquerda */
 }
 
-.heroContent h1 {
-  font-size: clamp(3.5rem, 8vw, 6rem);
+.heroText h1 {
+  font-size: clamp(3.5rem, 6vw, 5rem);
   font-weight: 800;
-  letter-spacing: -2px;
-  line-height: 1;
-  color: #fff;
+  line-height: 1.1;
+  color: var(--cor-texto);
 }
 
 .subtitle {
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  max-width: 600px;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  max-width: 500px;
   margin: 1.5rem 0 2.5rem 0;
-  color: #e0e0e0;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  color: var(--cor-texto-secundario);
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
 }
 
 .ctaButton {
   background-color: var(--cor-primaria);
   color: var(--cor-fundo);
-  padding: 1rem 2.5rem;
-  border-radius: 50px; /* Bordas totalmente arredondadas */
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
   border: 2px solid var(--cor-primaria);
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(207, 255, 15, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .ctaButton:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(207, 255, 15, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.socialsContainer {
-    margin-top: 4rem;
+.secondaryButton {
+  background-color: transparent;
+  color: var(--cor-primaria);
+}
+
+.secondaryButton:hover {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+}
+
+.buttonText, .buttonIcon {
+  transition: transform 0.3s ease;
+}
+.buttonIcon {
+  display: inline-block;
+  transform: translateX(-10px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.ctaButton:hover .buttonText {
+  transform: translateX(-5px);
+}
+.ctaButton:hover .buttonIcon {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .socials {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 .socials a {
-  color: #fff;
-  opacity: 0.7;
+  color: var(--cor-texto-secundario);
   transition: all 0.3s ease;
 }
 
 .socials a:hover {
-  opacity: 1;
-  transform: scale(1.2);
   color: var(--cor-primaria);
+  transform: scale(1.1);
+}
+
+/* Coluna da Direita */
+.heroVisual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroLogo {
+    width: 20rem;
+    height: auto;
+    animation: float 6s infinite ease-in-out;
+}
+
+/* Animação de flutuação suave para a logo */
+@keyframes float {
+	0% { transform: translateY(0px); }
+	50% { transform: translateY(-15px); }
+	100% { transform: translateY(0px); }
+}
+
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+  .heroContainer {
+    display: flex;
+    /* Muda para layout de coluna e coloca a logo no topo */
+    flex-direction: column-reverse; 
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    height: 100vh;
+    padding-top: 7rem;
+  }
+
+  .heroText {
+    align-items: center; /* Centraliza todo o conteúdo de texto */
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .buttonGroup {
+    justify-content: center; /* Centraliza os botões */
+  }
+
+  .heroLogo {
+    width: 10rem;
+    animation: none; /* Desativa a flutuação para economizar recursos */
+  }
+
+  .heroText h1 {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--cor-texto);
+}
+
 }

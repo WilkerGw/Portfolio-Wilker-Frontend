@@ -2,35 +2,47 @@
 
 .headerContainer {
   width: 100%;
-  padding: 1.5rem 8%;
-  position: fixed; /* Header fixo no topo */
+  padding: 1rem 8%; /* Ajustado o padding para consistência */
+  position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   z-index: 1000;
-  
-  /* Estado inicial transparente */
   background-color: transparent;
   border-bottom: 1px solid transparent;
-  
-  /* Transição suave para as propriedades que vão mudar */
-  transition: background-color 0.4s ease-out, border-color 0.4s ease-out, backdrop-filter 0.4s ease-out;
+  transition:
+    background-color 0.4s ease-out,
+    border-color 0.4s ease-out,
+    backdrop-filter 0.4s ease-out;
 }
 
-/* Novo estado 'scrolled' que é aplicado via JavaScript */
 .headerContainer.scrolled {
-  background-color: rgba(25, 25, 25, 0.7); /* Cor de fundo escura e semi-transparente */
-  backdrop-filter: blur(10px); /* O efeito de "vidro fosco" */
+  background-color: rgba(25, 25, 25, 0.7);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--cor-fundo-secundaria);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* NOVO: Wrapper para os elementos da direita */
+.rightSideWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 2rem;
+}
+
+/* Navegação de Desktop */
+.navigation {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
 .navigation ul {
-  list-style: none;
   display: flex;
   gap: 2rem;
+  list-style: none;
 }
 
 .navigation a {
@@ -38,26 +50,28 @@
   text-decoration: none;
   color: var(--cor-texto);
   transition: color 0.3s ease;
-  font-family: var(--font-bai-jamjuree);
 }
 
 .navigation a:hover {
   color: var(--cor-primaria);
 }
 
+/* Botões do Menu Mobile */
+.mobileMenuWrapper {
+  display: none; /* Escondido por padrão no desktop */
+}
+
 .menuButton {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 1010;
+  width: 2.5rem;
+  height: 2.5rem;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menuLine {
@@ -69,6 +83,7 @@
   transition: transform 0.3s ease-in-out;
 }
 
+/* Overlay do Menu Mobile (sem alterações) */
 .mobileNavOverlay {
   position: fixed;
   top: 0;
@@ -82,7 +97,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .mobileNavOverlay ul {
   list-style: none;
   text-align: center;
@@ -101,11 +115,20 @@
   color: var(--cor-primaria);
 }
 
+/* Media Query para alternar entre os menus */
 @media (max-width: 768px) {
-  .navigation {
-    display: none;
-  }
-  .menuButton {
+  .headerContainerIcons {
     display: flex;
+    flex-direction: column;
   }
+  .navigation {
+    display: none; /* Esconde a navegação de desktop */
+  }
+  .mobileMenuWrapper {
+    display: flex; /* Mostra o wrapper com os botões de mobile */
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
 }
