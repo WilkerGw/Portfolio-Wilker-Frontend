@@ -5,15 +5,15 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
       },
-      // Adicione este novo objeto para o Cloudinary
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-        port: '',
-        pathname: '/**',
+      },
+      // NOVA LINHA PARA O NOSSO BACKGROUND
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
       },
     ],
   },

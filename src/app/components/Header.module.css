@@ -2,20 +2,31 @@
 
 .headerContainer {
   width: 100%;
-  padding: .5rem;
-  background-color: var(--cor-fundo);
+  padding: 1.5rem 8%;
+  position: fixed; /* Header fixo no topo */
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--cor-fundo-secundaria);
-  position: relative;
   z-index: 1000;
-  position: fixed;
-  top: 0;
-  left: 0;
+  
+  /* Estado inicial transparente */
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  
+  /* Transição suave para as propriedades que vão mudar */
+  transition: background-color 0.4s ease-out, border-color 0.4s ease-out, backdrop-filter 0.4s ease-out;
 }
 
-/* Navegação Desktop */
+/* Novo estado 'scrolled' que é aplicado via JavaScript */
+.headerContainer.scrolled {
+  background-color: rgba(25, 25, 25, 0.7); /* Cor de fundo escura e semi-transparente */
+  backdrop-filter: blur(10px); /* O efeito de "vidro fosco" */
+  border-bottom: 1px solid var(--cor-fundo-secundaria);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
 .navigation ul {
   list-style: none;
   display: flex;
@@ -27,13 +38,13 @@
   text-decoration: none;
   color: var(--cor-texto);
   transition: color 0.3s ease;
+  font-family: var(--font-bai-jamjuree);
 }
 
 .navigation a:hover {
   color: var(--cor-primaria);
 }
 
-/* Botão Hambúrguer (Mobile) - REFINADO */
 .menuButton {
   display: none;
   flex-direction: column;
@@ -58,7 +69,6 @@
   transition: transform 0.3s ease-in-out;
 }
 
-/* Overlay de Navegação (Mobile) */
 .mobileNavOverlay {
   position: fixed;
   top: 0;
@@ -77,11 +87,9 @@
   list-style: none;
   text-align: center;
 }
-
 .mobileNavOverlay li {
   margin-bottom: 2rem;
 }
-
 .mobileNavOverlay a {
   font-size: 2rem;
   font-weight: bold;
@@ -89,12 +97,10 @@
   text-decoration: none;
   transition: color 0.3s ease;
 }
-
 .mobileNavOverlay a:hover {
   color: var(--cor-primaria);
 }
 
-/* O Ponto da Responsividade */
 @media (max-width: 768px) {
   .navigation {
     display: none;

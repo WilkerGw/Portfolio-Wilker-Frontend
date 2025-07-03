@@ -14,7 +14,7 @@ const Hero = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.3, delayChildren: 0.2 },
     },
   };
 
@@ -23,7 +23,7 @@ const Hero = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
@@ -34,54 +34,37 @@ const Hero = () => {
       initial="hidden"
       animate="visible"
     >
-      <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.mainText}`}>
-        <h1><span className={styles.highlight}>Wilker Martins</span></h1>
-        <p className={styles.subtitle}>
-          Desenvolvedor Web Full-Stack
-        </p>
-      </motion.div>
-
-      <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.logoItem}`}>
-        <Image
-          src="/logo.png"
-          alt="Logo principal"
-          width={150}
-          height={150}
-          priority
-        />
-      </motion.div>
+      {/* Imagem de Fundo */}
+      <Image
+        src="https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=2574&auto=format&fit=crop"
+        alt="Fundo abstrato de tecnologia"
+        layout="fill"
+        objectFit="cover"
+        className={styles.backgroundImage}
+        priority
+      />
+      {/* Overlay Escuro */}
+      <div className={styles.overlay}></div>
       
-      <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.statusItem}`}>
-        <div className={styles.statusIndicator}>
-          <div className={styles.glowingDot}></div>
-          <span>Disponível para Trabalho</span>
-        </div>
-      </motion.div>
+      {/* Conteúdo Centralizado */}
+      <div className={styles.heroContent}>
+        <motion.h1 variants={itemVariants}>
+          Wilker Martins
+        </motion.h1>
+        <motion.p variants={itemVariants} className={styles.subtitle}>
+          Desenvolvedor Web Full-Stack
+        </motion.p>
+        
+        <motion.div variants={itemVariants}>
+          <Link href="#projetos" className={styles.ctaButton}>
+            Explorar Projetos
+          </Link>
+        </motion.div>
 
-      <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.socialsItem}`}>
-        <SocialIcons />
-      </motion.div>
-
-      <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.projectsItem}`}>
-        <Link href="/#projetos">
-          <h3>Meus Projetos</h3>
-          <p>Veja os trabalhos que desenvolvi</p>
-          <span className={styles.arrow}>&rarr;</span>
-        </Link>
-      </motion.div>
-
-      <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.cvItem}`}>
-        <a href="/WilkerMartins_Curriculo.pdf" download="WilkerMartins_Curriculo.pdf">
-          <h3>Download CV</h3>
-          <p>Acesse meu currículo completo</p>
-          <span className={styles.arrow}>&darr;</span>
-        </a>
-      </motion.div>
-
-      <motion.div variants={itemVariants} className={`${styles.gridItem} ${styles.locationItem}`}>
-        <h3>São Paulo, Brasil</h3>
-      </motion.div>
-
+        <motion.div variants={itemVariants} className={styles.socialsContainer}>
+          <SocialIcons />
+        </motion.div>
+      </div>
     </motion.section>
   );
 };

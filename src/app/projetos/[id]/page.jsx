@@ -9,7 +9,9 @@ import { notFound } from 'next/navigation';
 async function getProjectData(id) {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/projects/${id}`;
 
-  // A MESMA MUDANÇA MÁGICA AQUI:
+  // AQUI ESTÁ A OTIMIZAÇÃO:
+  // Dizemos ao Next.js para gerar uma página estática e tentar
+  // recriá-la em segundo plano a cada 1 hora (3600 segundos).
   const res = await fetch(apiUrl, { next: { revalidate: 3600 } });
 
   if (!res.ok) {
@@ -24,12 +26,15 @@ export default async function ProjectDetailPage({ params }) {
   return (
     <main className={styles.detailContainer}>
       <Link href="/#projetos" className={styles.backLink}>&larr; Voltar para todos os projetos</Link>
+      
       <h1 className={styles.title}>{project.title}</h1>
+      
       <div className={styles.imageContainer}>
         <Image 
           src={project.imageUrl}
           alt={`Imagem da versão desktop do projeto ${project.title}`}
-          width={900} height={500}
+          width={900}
+          height={500}
           className={styles.projectImageDesktop}
           priority
         />
@@ -38,22 +43,30 @@ export default async function ProjectDetailPage({ params }) {
             <Image
               src={project.mobileImageUrl}
               alt={`Imagem da versão mobile do projeto ${project.title}`}
-              width={200} height={400}
+              width={200}
+              height={400}
               className={styles.projectImageMobile}
             />
           </div>
         )}
       </div>
+
       <div className={styles.content}>
         <h2>Sobre o Projeto</h2>
         <p>{project.description}</p>
         <h2>Tecnologias Utilizadas</h2>
         <div className={styles.tags}>
-          {project.tags.map((tag) => <span key={tag} className={styles.tag}>{tag}</span>)}
+          {project.tags.map((tag) => (
+            <span key={tag} className={styles.tag}>{tag}</span>
+          ))}
         </div>
         <div className={styles.projectLinks}>
-          <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>Ver Projeto Online 🚀</Link>
-          <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>Ver Repositório 🔗</Link>
+          <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
+            Ver Projeto Online 🚀
+          </Link>
+          <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
+            Ver Repositório 🔗
+          </Link>
         </div>
       </div>
     </main>
