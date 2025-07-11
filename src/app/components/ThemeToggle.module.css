@@ -1,0 +1,25 @@
+/* frontend/src/app/components/ThemeToggle.module.css */
+
+.toggleButton {
+  background-color: var(--cor-fundo-secundaria);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.toggleButton:hover {
+  border-color: var(--cor-primaria);
+  transform: scale(1.1);
+}
+
+.toggleButton svg {
+  width: 1rem;
+  color: var(--cor-texto);
+}
+

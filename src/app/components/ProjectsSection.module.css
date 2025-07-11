@@ -1,0 +1,45 @@
+/* frontend/src/app/components/ProjectsSection.module.css */
+
+.projectsSection {
+  padding: 5rem 8%;
+  background-color: var(--cor-fundo);
+}
+
+.projectsSection h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--cor-texto);
+}
+
+.projectsSection h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--cor-primaria);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.loadingText,
+.errorText {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+}
+
+.errorText {
+  color: #ff8a8a;
+  background-color: rgba(255, 15, 15, 0.1);
+  border: 1px solid #ff8a8a;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}

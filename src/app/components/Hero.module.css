@@ -1,0 +1,164 @@
+.heroContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 82px);
+  background-color: var(--cor-fundo);
+  transition: background-color 0.3s ease;
+}
+
+.heroText {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heroText h1 {
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--cor-texto);
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  max-width: 500px;
+  margin: 1.5rem 0 2.5rem 0;
+  color: var(--cor-texto-secundario);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.ctaButton {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  border: 2px solid var(--cor-primaria);
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: var(--cor-primaria);
+}
+
+.secondaryButton:hover {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fundo);
+}
+
+.buttonText,
+.buttonIcon {
+  transition: transform 0.3s ease;
+}
+.buttonIcon {
+  display: inline-block;
+  transform: translateX(-10px);
+  opacity: 0;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+.ctaButton:hover .buttonText {
+  transform: translateX(-5px);
+}
+.ctaButton:hover .buttonIcon {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.socials a {
+  color: var(--cor-texto-secundario);
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  color: var(--cor-primaria);
+  transform: scale(1.1);
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroLogo {
+  width: 20rem;
+  height: auto;
+  animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 992px) {
+  .heroContainer {
+    display: flex;
+
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    height: 100vh;
+    padding-top: 7rem;
+  }
+
+  .heroText {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .buttonGroup {
+    justify-content: center;
+  }
+
+  .heroLogo {
+    width: 10rem;
+    animation: none;
+  }
+
+  .heroText h1 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--cor-texto);
+  }
+}

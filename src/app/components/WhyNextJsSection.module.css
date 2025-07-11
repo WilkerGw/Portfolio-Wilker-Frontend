@@ -1,0 +1,83 @@
+/* frontend/src/app/components/WhyNextJsSection.module.css */
+
+.whyNextContainer {
+  padding: 5rem 8%;
+  background-color: var(--cor-fundo-secundaria); /* Mudei para secundária para contraste */
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle::after {
+  content: ''; display: block; width: 60px; height: 4px; background-color: var(--cor-primaria); margin: 0.5rem auto 0; border-radius: 2px;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--cor-texto-secundario); /* CORRIGIDO */
+}
+
+.advantagesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.advantageCard {
+  background-color: var(--cor-fundo); /* CORRIGIDO */
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--cor-borda); /* CORRIGIDO */
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--cor-primaria);
+}
+
+.advantageCard ul { list-style: none; padding: 0; margin: 0; }
+.advantageCard ul:first-of-type li { margin-bottom: 0; }
+
+.advantageCard li {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--cor-texto-secundario); /* CORRIGIDO */
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.advantageCard li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--cor-primaria);
+}
+
+.showMoreButton {
+    background: none; border: none; color: var(--cor-primaria); font-weight: bold;
+    font-size: 1rem; cursor: pointer; display: flex; align-items: center;
+    gap: 0.5rem; padding: 0.5rem 0; margin-top: 1rem; align-self: flex-start;
+}
+
+.arrowIcon {
+    display: inline-block; transition: transform 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  .advantagesGrid {
+    grid-template-columns: 1fr;
+  }
+}

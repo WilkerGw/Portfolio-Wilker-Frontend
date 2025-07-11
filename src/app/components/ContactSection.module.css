@@ -1,0 +1,58 @@
+/* frontend/src/app/components/ContactSection.module.css */
+
+.contactContainer {
+  padding: 6rem 8%;
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+  background-color: var(--cor-fundo-secundaria); /* Adicionada a cor de fundo */
+}
+
+/* Coluna da Esquerda (Formulário) */
+.formColumn { flex: 2; }
+.formColumn h2 { font-size: 2.5rem; color: var(--cor-primaria); }
+.formColumn p { font-size: 1.1rem; color: var(--cor-texto-secundario); margin-bottom: 2.5rem; max-width: 600px; }
+
+.contactForm { display: flex; flex-direction: column; gap: 1.5rem; }
+.formGroup { display: flex; flex-direction: column; }
+.formGroup label { margin-bottom: 0.5rem; font-weight: 600; }
+.formGroup input, .formGroup textarea {
+  background-color: var(--cor-fundo); /* Alterado para contraste */
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px; padding: 0.9rem 1rem; color: var(--cor-texto);
+  font-size: 1rem; font-family: inherit; transition: border-color 0.3s, box-shadow 0.3s;
+}
+.formGroup input:focus, .formGroup textarea:focus {
+  outline: none; border-color: var(--cor-primaria); box-shadow: 0 0 10px rgba(207, 255, 15, 0.2);
+}
+
+.submitButton {
+  background-color: var(--cor-primaria); color: var(--cor-fundo); padding: 1rem;
+  border-radius: 8px; border: none; font-weight: bold; font-size: 1.1rem;
+  cursor: pointer; transition: all 0.3s ease;
+}
+.submitButton:hover:not(:disabled) { transform: translateY(-3px); }
+.submitButton:disabled { background-color: var(--cor-texto-secundario); cursor: not-allowed; } /* Ajuste no modo desativado */
+.successMessage, .errorMessage { margin-top: 1rem; padding: 1rem; border-radius: 8px; font-weight: 500; }
+.successMessage { background-color: rgba(207, 255, 15, 0.1); color: var(--cor-primaria); border: 1px solid var(--cor-primaria); }
+.errorMessage { background-color: rgba(255, 15, 15, 0.1); color: #ff8a8a; border: 1px solid #ff8a8a; }
+
+/* Coluna da Direita (Contato Direto) */
+.directColumn { flex: 1; position: sticky; top: 120px; }
+.directContactCard {
+  background-color: var(--cor-fundo); /* Alterado para contraste */
+  padding: 2rem; border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+}
+.directContactCard h3 { font-size: 1.5rem; margin-top: 0; color: var(--cor-primaria); }
+.directContactCard p { color: var(--cor-texto-secundario); line-height: 1.6; margin-bottom: 1.5rem; }
+.directLink { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--cor-texto); text-decoration: none; transition: color 0.3s ease; }
+.directLink:hover { color: var(--cor-primaria); }
+.directLink svg { stroke: var(--cor-primaria); }
+.separator { border-top: 1px solid var(--cor-borda); margin-top: 2rem; padding-top: 2rem; }
+.separator h3 { font-size: 1.2rem; }
+
+@media (max-width: 992px) {
+  .contactContainer { flex-direction: column; gap: 4rem; }
+  .directColumn { position: static; top: auto; }
+}

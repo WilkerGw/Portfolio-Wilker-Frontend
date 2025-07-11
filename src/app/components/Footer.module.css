@@ -1,0 +1,11 @@
+/* frontend/src/app/components/Footer.module.css */
+
+.footerContainer {
+  width: 100%;
+  padding: 2.5rem 5%; /* Aumentei um pouco o padding para mais respiro */
+  text-align: center;
+  background-color: var(--cor-fundo-secundaria); /* Adicionada a cor de fundo secundária */
+  border-top: 1px solid var(--cor-borda); /* Usa a variável de borda */
+  font-size: 0.9rem;
+  color: var(--cor-texto-secundario); /* CORRIGIDO: Usa a variável de texto secundário */
+}

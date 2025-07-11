@@ -1,0 +1,130 @@
+.headerContainer {
+  width: 100%;
+  padding: 1rem 8%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.4s ease-out,
+    border-color 0.4s ease-out,
+    backdrop-filter 0.4s ease-out;
+}
+
+.headerContainer.scrolled {
+  background-color: rgba(25, 25, 25, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--cor-fundo-secundaria);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.headerContainer.scrolled .navigation a {
+  color: #ffffff;
+}
+
+.rightSideWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 2rem;
+}
+
+.navigation {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.navigation ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navigation a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--cor-texto);
+  transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+  color: var(--cor-primaria);
+}
+
+.mobileMenuWrapper {
+  display: none;
+}
+
+.menuButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuLine {
+  width: 1.8rem;
+  height: 0.18rem;
+  background: var(--cor-texto);
+  border-radius: 10px;
+  position: absolute;
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobileNavOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(40, 40, 40, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mobileNavOverlay ul {
+  list-style: none;
+  text-align: center;
+}
+.mobileNavOverlay li {
+  margin-bottom: 2rem;
+}
+.mobileNavOverlay a {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--cor-texto);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.mobileNavOverlay a:hover {
+  color: var(--cor-primaria);
+}
+
+@media (max-width: 768px) {
+  .headerContainerIcons {
+    display: flex;
+    flex-direction: column;
+  }
+  .navigation {
+    display: none;
+  }
+  .mobileMenuWrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.3rem;
+  }
+}
